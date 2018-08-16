@@ -45,6 +45,7 @@ import com.esri.arcgisruntime.mapping.view.MapView;
 public class AddFeaturesSample extends Application {
 
   private MapView mapView;
+  private Stage primaryStage;
 
   private ServiceFeatureTable featureTable;
 
@@ -55,6 +56,8 @@ public class AddFeaturesSample extends Application {
   public void start(Stage stage) {
 
     try {
+      primaryStage = stage;
+
       // create stack pane and application scene
       StackPane stackPane = new StackPane();
       Scene scene = new Scene(stackPane);
@@ -173,6 +176,7 @@ public class AddFeaturesSample extends Application {
 
     Platform.runLater(() -> {
       Alert dialog = new Alert(AlertType.INFORMATION);
+      dialog.initOwner(primaryStage.getOwner());
       dialog.setHeaderText(title);
       dialog.setContentText(message);
       dialog.showAndWait();
